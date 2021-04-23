@@ -12,4 +12,4 @@
 ``$ npm install``
 ``$ npm run dev``
 
-* Abra no seu navegador <http://localhost:3030>
+* Abra no seu navegador <http://localhost:3333>
