@@ -9,12 +9,14 @@ const writeFile = promisify(fs.writeFile)
 
 const routes = Router();
 
+// All Accounts
 routes.get('/accounts', async (req, res) => {
   const response = JSON.parse(await readFile('accounts.json', 'utf-8'));
   delete response.nextId;
   res.status(200).send(response);
 })
 
+// Create New Clients
 routes.post('/client', async (req, res)=> {
   const {name, balance} = req.body
 
@@ -34,6 +36,7 @@ routes.post('/client', async (req, res)=> {
 })
 
 
+// Deposit to a Client
 routes.put('/client/deposit/:id', async (req, res) => {
   const { deposit } = req.body
   const { id } = req.params
@@ -53,6 +56,7 @@ routes.put('/client/deposit/:id', async (req, res) => {
   }
 })
 
+// Withdraw from balance
 routes.put('/client/withdraw/:id', async (req, res) => {
   const { withdraw } = req.body
   const { id } = req.params
@@ -74,7 +78,7 @@ routes.put('/client/withdraw/:id', async (req, res) => {
   }
 })
 
-
+//Check balance from a client
 routes.get('/client/balance/:id', async (req, res) => {
   const { id } = req.params
 
@@ -91,6 +95,7 @@ routes.get('/client/balance/:id', async (req, res) => {
   }
 })
 
+// Remove a account 
 routes.delete('/client/delete/:id', async (req, res) => {
   const { id } = req.params
 
